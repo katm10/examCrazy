@@ -45,6 +45,12 @@ document.onload = function(){
       
 };
 	
+	function read(){
+		firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+			messages = snapshot.val().messages;
+});	
+	}
+	
 function msgsToString(){
 	var str = "";
       for(var i = 0; i < messages.length; i++){
@@ -62,6 +68,7 @@ function keyUp(event){
       var text = document.getElementById("textbox").value;
       var body = document.getElementById("body").innerHTML;
       
+	    read();
       messages.push(text);
       
       firebase.database().ref('messages').set({
