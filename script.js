@@ -1,11 +1,11 @@
-var i = 1;
+var i = 0;
 
 function duplicate() {
 	i = i+1;
 	console.log(i);
 	var original = document.getElementById("question0");
     var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "question" + i;
+    clone.id = "question0" + i;
     for(b = 0; b > 5; b++){
     	clone.children[b].id = original.children.id[b] + i;
     }
