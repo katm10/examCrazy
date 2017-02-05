@@ -31,6 +31,19 @@ messagesRef.on('value', function(snapshot) {
     messages = ["hi"];
   }
 });
+	
+document.onload = function(){
+	document.getElementById("messages").innerHTML = msgsToString();
+      
+};
+	
+function msgsToString(){
+	var str = "";
+      for(var i = 0; i < messages.length; i++){
+	str += messages[i] + "<br>";
+      }
+	return str;
+}
 
 
 function keyUp(event){
@@ -47,10 +60,7 @@ function keyUp(event){
         messages: messages
       });
       
-      var str = "";
-      for(var i = 0; i < messages.length; i++){
-	str += messages[i] + "<br>";
-      }
+      var str = msgsToString();
 	    
       document.getElementById("messages").innerHTML = str;
         
