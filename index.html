@@ -46,10 +46,15 @@ function keyUp(event){
       firebase.database().ref('messages').set({
         messages: messages
       });
-      console.log(messages);
       
+      var str = "";
+      for(var i = 0; i < messages.length; i++){
+	str += messages[i];
+      }
+	    
+      document.getElementById("messages").innerHTML = str;
         
-      document.getElementById("body").innerHTML = text + "<br>" + body;
+      //document.getElementById("body").innerHTML = text + "<br>" + body;
       document.getElementById("textbox").value = "";
       $("#textbox").focus();
       
@@ -65,7 +70,7 @@ function keyUp(event){
   <input id = "textbox" type = "text" onkeyup = "keyUp(event)">
   <h5> or <a href="createagame.html">create your own</a> </h5>
   </div>
-	<iframe position = "absolute" width = "1500px" height = "750px" src = "https://kahoot.it/"></iframe>
+	<p id = "messages"></p>
 </body>
 </html>
 
