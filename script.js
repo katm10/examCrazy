@@ -8,18 +8,23 @@ function duplicate() {
     clone.id = "question" + i;
     for(b = 0; b > 5; b++){
     	clone.children[b].id = original.children.id[b].val().slice(0,-1) + i;
+	if (clone.children[b].tagName == "input" && clone.children[b].getAttribute("type") == "text") {
+		clone.children[b].value = "";
+	}
     }
     // or clone.id = ""; if the divs don't need an ID
     original.appendChild(clone);
 }
 
 function startGame(){
-	for(a = 0; a < i; a++){
+	var parent = document.getElementById("question1");
+	var str = parent.children[0].getId();
+	/*for(a = 0; a < i; a++){
 		var questionString = document.getElementById("questionStr-"+a).val();
 		var falseAnswer1 = document.getElementById("falseAnswer1-"+a).val();
 		var falseAnswer2 = document.getElementById("falseAnswer2-"+a).val();
 		var falseAnswer3 = document.getElementById("falseAnswer3-"+a).val();
 		var correctAnswer = document.getElementById("correctAnswer-"+a).val();
 		console.log(questionString + " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
-	}
+	}*/
 }
