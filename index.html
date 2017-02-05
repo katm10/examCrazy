@@ -41,7 +41,6 @@ window.onload = function(){
 	//update();
 	var i = 0;
 	setInterval(function(){
-		console.log(i);
 		if(i % 2000 == 0){
 			targetColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
 		}
@@ -52,7 +51,7 @@ window.onload = function(){
 		
 		document.body.style.background = "rgb(" + Math.trunc(currentColor[0]) + "," + Math.trunc(currentColor[1]) + "," + Math.trunc(currentColor[2]) + ")";
 		
-		i++;
+		i += 100;
 	}, 100);
 };
 
