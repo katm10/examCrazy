@@ -12,7 +12,7 @@ function duplicate() {
 
 function startGame(){
 	for(a = 0; a < i; a++){
-		var questionString = document.getElementById("question"+a).getElementById("questionStr").val();
+		var questionString = document.getElementById("question"+a).getElementById("qs").val();
 		console.log(questionString);
 	}
 }
