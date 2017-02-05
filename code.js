@@ -4,6 +4,8 @@ var messagesRef = firebase.database().ref('messages');
 
 messagesRef.on('value', function(snapshot) {
   messages = snapshot.val();
+  if(messages == null){
+    messages = ["hi"];
 });
 
 
