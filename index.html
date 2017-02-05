@@ -27,6 +27,9 @@ var id = 0;
 var messages = [""];
 
 var messagesRef;
+
+var currentColor = [0, 0, 0];
+var targetColor = [0, 0, 0];
 	
 function update(){
 	var el = document.getElementById("messages");
@@ -36,6 +39,20 @@ function update(){
 	
 document.onload = function(){
 	//update();
+	var i = 0;
+	setInterval(function(){
+		if(i % 2000 == 0){
+			targetColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
+		}
+		
+		for(int j = 0; j < currentColor.length(); j++){
+			currentColor[j] += (targetColor[j] - currentColor[j])/10.0;
+		}
+		
+		document.body.style.background = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")";
+		
+		i++;
+	}, 100);
 };
 
 function read(){
@@ -53,6 +70,10 @@ function msgsToString(){
 		str += messages[i] + "<br>";
 	}
 	return str;
+}
+
+function clearTextBox(){
+	document.getElementById("textbox").value = "";
 }
 
 function keyUp(event){
@@ -93,6 +114,8 @@ function keyUp(event){
 					}
 				});
 		        }
+			
+			clearTextBox();
 		}
 		else {
 			var text = document.getElementById("textbox").value;
@@ -104,7 +127,7 @@ function keyUp(event){
 			});
 			update();
 			//document.getElementById("body").innerHTML = text + "<br>" + body;
-			document.getElementById("textbox").value = "";
+			clearTextBox();
 			$("#textbox").focus();
 		}
 	}
