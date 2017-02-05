@@ -49,7 +49,7 @@ document.onload = function(){
 			currentColor[j] += (targetColor[j] - currentColor[j])/10.0;
 		}
 		
-		document.body.style.background = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")";
+		document.body.style.background = "rgb(" + Math.trunc(currentColor[0]) + "," + Math.trunc(currentColor[1]) + "," + Math.trunc(currentColor[2]) + ")";
 		
 		i++;
 	}, 100);
