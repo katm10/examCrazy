@@ -8,7 +8,7 @@ function duplicate() {
   clone.id = "question" + i;
   for (b = 0; b > 5; b++) {
     clone.children[b].id = original.children[b].id.val().slice(0, -1) + i;
-    console.log("id is: "+ clone.children[b].id.val();
+    console.log("id is: "+ clone.children[b].id.val);
     if (clone.children[b].tagName == "input" && clone.children[b].getAttribute("type") == "text") {
       clone.children[b].value = "";
 	
