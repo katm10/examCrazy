@@ -1,3 +1,12 @@
+var messages = ["hi"];
+
+var messagesRef = firebase.database().ref('messages');
+
+messagesRef.on('value', function(snapshot) {
+  messages = snapshot.val();
+});
+
+
 function keyUp(event){
     var x = event.which || event.keyCode;
     console.log(x);
@@ -5,6 +14,15 @@ function keyUp(event){
       console.log("enter");
       var text = document.getElementById("textbox").value;
       var body = document.getElementById("body").innerHTML;
+      
+      messages.push(text);
+      
+      firebase.database.ref('messages').set({
+        messages: messages
+      });
+      console.log(messages);
+      
+        
       document.getElementById("body").innerHTML = text + "<br>" + body;
       document.getElementById("textbox").value = "";
       $("#textbox").focus();
