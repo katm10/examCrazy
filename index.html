@@ -45,7 +45,7 @@ document.onload = function(){
 			targetColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
 		}
 		
-		for(var j = 0; j < currentColor.length(); j++){
+		for(var j = 0; j < currentColor.length; j++){
 			currentColor[j] += (targetColor[j] - currentColor[j])/10.0;
 		}
 		
