@@ -15,7 +15,29 @@ function duplicate() {
 
 function startGame(){
 	for(a = 0; a < i; a++){
-		var questionString = document.getElementById("question"+a).val();
-		console.log(questionString);
+		var currentQuestionBlock = document.getElementById("question"+a);
+		var questionStr = currentQuestionBlock.children[0].val();
+		var falseAnswer1 = currentQuestionBlock.children[1].val();
+		var falseAnswer2 = currentQuestionBlock.children[2].val();
+		var falseAnswer3 = currentQuestionBlock.children[3].val();
+		var correctAnswer = currentQuestionBlock.children[4].val();
+ var postData = {
+    "questionStr": questionStr,
+    uid: uid,
+    body: body,
+    title: title,
+    starCount: 0,
+    authorPic: picture
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('posts').push().key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+  return firebase.database().ref().update(updates);
 	}
 }
