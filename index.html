@@ -30,10 +30,18 @@ messagesRef.on('value', function(snapshot) {
   if(messages == null){
     messages = ["hi"];
   }
+	
+	update();
 });
 	
+	function update(){
+		
+	document.getElementById("messages").innerHTML = msgsToString();	
+	}
+	
 document.onload = function(){
-	document.getElementById("messages").innerHTML = msgsToString();
+	
+	update();
       
 };
 	
@@ -60,9 +68,7 @@ function keyUp(event){
         messages: messages
       });
       
-      var str = msgsToString();
-	    
-      document.getElementById("messages").innerHTML = str;
+	    update();
         
       //document.getElementById("body").innerHTML = text + "<br>" + body;
       document.getElementById("textbox").value = "";
