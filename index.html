@@ -35,7 +35,9 @@ messagesRef.on('value', function(snapshot) {
 });
 	
 function update(){
-	document.getElementById("messages").innerHTML = msgsToString();	
+	var el = document.getElementById("messages");
+	el.innerHTML = msgsToString();	
+	el.scrollTop = el.scrollHeight;
 }
 	
 document.onload = function(){
@@ -43,12 +45,12 @@ document.onload = function(){
 };
 
 function read(){
-	firebase.database().ref('messages').once('value').then(function(snapshot) {
+	/*firebase.database().ref('messages').once('value').then(function(snapshot) {
 		messages = snapshot.val().messages;
 		if(messages == null){
 			messages = [""];	
 		}
-	});	
+	});	*/
 }
 	
 function msgsToString(){
