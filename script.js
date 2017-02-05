@@ -3,7 +3,7 @@ var i = 1;
 function duplicate() {
 	i = i+1;
 	console.log(i);
-	var original = document.getElementById("question");
+	var original = document.getElementById("question0");
     var clone = original.cloneNode(true); // "deep" clone
     clone.id = "question" + i;
     for(b = 0; b > 5; b++){
@@ -15,7 +15,7 @@ function duplicate() {
 
 function startGame(){
 	for(a = 0; a < i; a++){
-		var questionString = document.getElementById("question"+a);
+		var questionString = document.getElementById("");
 		console.log(questionString);
 	}
 }
