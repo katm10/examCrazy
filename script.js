@@ -7,5 +7,5 @@ function duplicate() {
     var clone = original.cloneNode(true); // "deep" clone
     clone.id = "question" + i;
     // or clone.id = ""; if the divs don't need an ID
-    original.parentNode.appendChild(clone);
+    original.appendChild(clone);
 }
