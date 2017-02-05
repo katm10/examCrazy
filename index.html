@@ -25,66 +25,56 @@ var messages = [""];
 var messagesRef = firebase.database().ref('messages');
 
 messagesRef.on('value', function(snapshot) {
-  messages = snapshot.val().messages;
-  console.log(messages);
-  if(messages == null){
-    messages = [""];
-  }
-	
+	messages = snapshot.val().messages;
+	console.log(messages);
+	if(messages == null){
+		messages = [""];
+	}
 	update();
 });
 	
 	function update(){
-		
-	document.getElementById("messages").innerHTML = msgsToString();	
+		document.getElementById("messages").innerHTML = msgsToString();	
 	}
 	
 document.onload = function(){
-	
 	update();
-      
 };
-	
-	function read(){
-		firebase.database().ref('messages').once('value').then(function(snapshot) {
-			messages = snapshot.val().messages;
-			if(messages == null){
-				messages = [""];	
-			}
-});	
-	}
+
+function read(){
+	firebase.database().ref('messages').once('value').then(function(snapshot) {
+		messages = snapshot.val().messages;
+		if(messages == null){
+			messages = [""];	
+		}
+	});	
+}
 	
 function msgsToString(){
 	var str = "";
-      for(var i = 0; i < messages.length; i++){
-	str += messages[i] + "<br>";
-      }
+	for(var i = 0; i < messages.length; i++){
+		str += messages[i] + "<br>";
+	}
 	return str;
 }
 
-
 function keyUp(event){
-    var x = event.which || event.keyCode;
-    console.log(x);
-    if(x == 13){
-      console.log("enter");
-      var text = document.getElementById("textbox").value;
-      var body = document.getElementById("body").innerHTML;
-      
-	    read();
-      messages.push(text);
-      
-      firebase.database().ref('messages').set({
-        messages: messages
-      });
-      
-	    update();
-        
-      //document.getElementById("body").innerHTML = text + "<br>" + body;
-      document.getElementById("textbox").value = "";
-      $("#textbox").focus();
-      
-    }
+	var x = event.which || event.keyCode;
+	console.log(x);
+	if(x == 13){
+		console.log("enter");
+		var text = document.getElementById("textbox").value;
+		var body = document.getElementById("body").innerHTML;
+		read();
+		messages.push(text);
+		firebase.database().ref('messages').set({
+			messages: messages
+	        });
+		update();
+		//document.getElementById("body").innerHTML = text + "<br>" + body;
+                document.getElementById("textbox").value = "";
+                $("#textbox").focus();
+	}
 }
 
 </script>
