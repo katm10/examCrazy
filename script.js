@@ -18,7 +18,6 @@ function duplicate() {
   original.parentNode.appendChild(clone);
 }
 
-<<<<<<< HEAD
 function startGame(){
 	for(a = 0; a < i; a++){
 		var currentQuestionBlock = document.getElementById("question"+a);
@@ -27,30 +26,8 @@ function startGame(){
 		var falseAnswer2 = currentQuestionBlock.children[2].val();
 		var falseAnswer3 = currentQuestionBlock.children[3].val();
 		var correctAnswer = currentQuestionBlock.children[4].val();
- var postData = {
-    "questionStr": questionStr,
-    uid: uid,
-    body: body,
-    title: title,
-    starCount: 0,
-    authorPic: picture
-  };
 
-  // Get a key for a new Post.
-  var newPostKey = firebase.database().ref().child('posts').push().key;
-
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-  return firebase.database().ref().update(updates);
 	}
-}
-=======
-function startGame() {
-  var parent = document.getElementById("question1");
-  var str = parent.children[0].getId();
   /*for(a = 0; a < i; a++){
   	var questionString = document.getElementById("questionStr-"+a).val();
   	var falseAnswer1 = document.getElementById("falseAnswer1-"+a).val();
@@ -60,4 +37,4 @@ function startGame() {
   	console.log(questionString + " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
   }*/
 }
->>>>>>> origin/master
+
