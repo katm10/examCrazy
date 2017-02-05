@@ -9,3 +9,10 @@ function duplicate() {
     // or clone.id = ""; if the divs don't need an ID
     original.appendChild(clone);
 }
+
+function startGame(){
+	for(a = 0; a < i; a++){
+		var questionString = document.getElementById("question"+a).getElementById("questionStr").val();
+		console.log(questionString);
+	}
+}
