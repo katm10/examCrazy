@@ -1,30 +1,28 @@
 //You need to add this to the HTML
+
+//this is the main starting page stuff
 body
 {
   background-color: lightblue;
 }
 
-start_page
-{
-}
+
+
+
+
+//formating for the page where the kahoo is created
 create_page
 {
 }
+//chat
 game_page_chat
 {
 }
+//problem/question
 game_page_problem
 {
 }
-game_page_answer1
-{
-}
-game_page_answer2
-{
-}
-game_page_answer3
-{
-}
-game_page_answer4
+//all the answers for the question should have the same layout, we might randomize color though
+game_page_answer1,game_page_answer2,game_page_answer3,game_page_answer4
 {
 }
