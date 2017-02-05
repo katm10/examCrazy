@@ -1,25 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
-    authDomain: "exam-crazy.firebaseapp.com",
-    databaseURL: "https://exam-crazy.firebaseio.com",
-    storageBucket: "exam-crazy.appspot.com",
-    messagingSenderId: "788284782428"
-  };
-  firebase.initializeApp(config);
-</script>
-<script type="text/javascript" src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-</head>
-<body id = "body" >
-<script type="text/javascript" src="script.js"></script>
-<input type="text" placeholder="Quiz Name" name="quizName">
 
+<<<<<<< HEAD
 <div id="question0"> 
     <input type="text" name="questionStr" placeholder="Question">
     <br>
@@ -36,5 +17,43 @@
 <button id="start" onclick="startGame()">Start Game!</button>
 </body>
 </html>
+=======
+>>>>>>> origin/master
 
+    <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
+        authDomain: "exam-crazy.firebaseapp.com",
+        databaseURL: "https://exam-crazy.firebaseio.com",
+        storageBucket: "exam-crazy.appspot.com",
+        messagingSenderId: "788284782428"
+      };
+      firebase.initializeApp(config);
 
+    </script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <body id="body">
+    <script type="text/javascript" src="script.js"></script>
+    <input type="text" placeholder="Quiz Name" name="quizName">
+<div id = "questionsDiv">
+  <div id="question0">
+      <input type="text" name="questionStr" id="questionStr-0" placeholder="Question">
+      <br>
+      <input type="text" name="falseAnswer0" id="falseAnswer1-0" placeholder="Incorrect Answer 1">
+      <br>
+      <input type="text" name="falseAnswer1" id="falseAnswer2-0" placeholder="Incorrect Answer 2">
+      <br>
+      <input type="text" name="falseAnswer2" id="falseAnswer3-0" placeholder="Incorrect Answer 3">
+      <br>
+      <input type="text" name="correctAnswer" id="correctAnswer-0" placeholder="Correct Answer">
+      <br>
+    </div>
+</div>
+  
+    <button id="button" onclick="duplicate()">Add another question</button>
+    <button id="start" onclick="startGame()">Start Game!</button>
+  </body>
