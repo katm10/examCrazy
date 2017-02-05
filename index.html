@@ -42,7 +42,7 @@ function keyUp(event){
       
       messages.push(text);
       
-      firebase.database.ref('messages').set({
+      firebase.database().ref('messages').set({
         messages: messages
       });
       console.log(messages);
