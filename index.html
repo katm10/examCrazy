@@ -20,7 +20,7 @@ body {
 </script>
 <!--<script type="text/javascript" src="code.js"></script>!-->
 <script>
-var messages = ["hi"];
+var messages = [""];
 
 var messagesRef = firebase.database().ref('messages');
 
@@ -28,7 +28,7 @@ messagesRef.on('value', function(snapshot) {
   messages = snapshot.val().messages;
   console.log(messages);
   if(messages == null){
-    messages = ["hi"];
+    messages = [""];
   }
 	
 	update();
@@ -46,8 +46,11 @@ document.onload = function(){
 };
 	
 	function read(){
-		firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+		firebase.database().ref('messages').once('value').then(function(snapshot) {
 			messages = snapshot.val().messages;
+			if(messages == null){
+				messages = [""];	
+			}
 });	
 	}
 	
@@ -89,7 +92,7 @@ function keyUp(event){
 </head>
 <body id = "body" >
 <div align="center">
-	<h1>👽👽👽👽👽ayyy lmao👽👽👽👽👽</h1>
+	<h1>Please enter the 8 digit game code</h1>
   <input id = "textbox" type = "text" onkeyup = "keyUp(event)">
   <h5> or <a href="createagame.html">create your own</a> </h5>
   </div>
