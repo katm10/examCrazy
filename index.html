@@ -62,28 +62,36 @@ function keyUp(event){
 			var entered = document.getElementById("textbox").value;
 			if(entered.length > 0){
 				messagesRef = firebase.database().ref('messages/'+entered);
-				if(messagesRef != null){
-					id = entered;
-					document.getElementById("header").innerHTML = "You have joined "+entered;
-					
-					messagesRef.on('value', function(snapshot) {
+				
+				firebase.database().ref('messages/'+entered).once('value').then(function(snapshot) {
+					if(snapshot.val() == null){
+						if(entered == "1"){
+							firebase.database().ref('messages/1').set({
+								messages: [""]
+							});
+						}
+						else {
+							alert("Incorrect chat PIN.");
+						}
+					}
+					else {
+						id = entered;
+						document.getElementById("header").innerHTML = "You have joined "+entered;
 						messages = snapshot.val().messages;
 						if(messages == null){
 							messages = [""];
 						}
+						
+						messagesRef.on('value', function(snapshot) {
+							messages = snapshot.val().messages;
+							if(messages == null){
+								messages = [""];
+							}
+							update();
+						});
 						update();
-					});
-					
-					update();
-				}
-				else if(entered == "1"){
-					firebase.database().ref('messages/1').set({
-						messages: [""]
-					});
-				}
-				else {
-					alert("Incorrect chat PIN.");
-				}
+					}
+				});
 		        }
 		}
 		else {
