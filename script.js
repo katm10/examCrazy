@@ -24,8 +24,10 @@ for (var ii = 0; ii < clone.childNodes.length; ii++)
 }
 
 function startGame(){
-	var firebaseRef = new Firebase("https://exam-crazy.firebaseio.com/Games");
+	var firebaseRef = firebase.database().ref('Games/');
 	var firebaseGameRef = firebaseRef.push();
+	var quizName = $('#quizNameInput').val();
+	firebaseGameRef.child("Name").set(quizName);
 	console.log(i);
 	for(a = 0; a <= i; a++){
 		var firebaseQuestionRef = firebaseGameRef.child("question"+a);
@@ -38,7 +40,7 @@ function startGame(){
 		var correctAnswer =  $('#'+'correctAnswer-'+a).val();
 
 
-		firebaseQuestionRef.set({
+	firebaseQuestionRef.set({
     "questionStr": questionStr,
     "falseAnswer1": falseAnswer1,
     "falseAnswer2" : falseAnswer2,
