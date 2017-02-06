@@ -23,5 +23,9 @@ function keyUp(event){
 				}
 			});
 		}
+		
+		return true;
 	}
+	
+	return false;
 }
