@@ -30,11 +30,11 @@
 			<div class="row">
 			  <div class="col-md-12 text-center">
 				<h1 class="text-inverse">Enter Code Below</h1>
-				<form class="form-horizontal" role="form">
+				<!--<form class="form-horizontal" role="form">!-->
 				  <div class="form-group">
-					<input type="text" class="form-control" id="privateCode" onkeydown="if(keyUp(event)){return false;}" placeholder="8-Digit Code" style="width: 50%; text-align:center; margin:auto; height:10%; font-size:222%">
+					<input type="text" class="form-control" id="privateCode" onkeyup="keyUp(event)" placeholder="8-Digit Code" style="width: 50%; text-align:center; margin:auto; height:10%; font-size:222%">
 				  </div>
-				</form>
+				<!--</form>!-->
 				<br>
 				<br>
 				<a class="btn btn-lg btn-primary">Go</a>
