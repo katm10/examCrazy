@@ -25,7 +25,7 @@ function keyUp(event){
 					}
 				}
 				else {
-					alert("Placeholder for joining.");
+					window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?"+entered;
 				}
 			});
 		}
