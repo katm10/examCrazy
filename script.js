@@ -27,7 +27,7 @@ function startGame(){
 		var falseAnswer3 =  $('#'+'falseAnswer3-'+a).val();
 		var correctAnswer =  $('#'+'correctAnswer-'+a).val();
 
-		console.log(questionString + " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
+		console.log(questionStr+ " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
 
 	}
   /*for(a = 0; a < i; a++){
