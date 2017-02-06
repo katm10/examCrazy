@@ -1,3 +1,9 @@
+window.onload = function(){
+	document.getElementById("privateCode").addEventListener('submit', function(e) {
+		e.preventDefault();
+	}, false);
+}
+
 function keyUp(event){
 	var x = event.which || event.keyCode;
 	if(x == 13){
