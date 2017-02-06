@@ -21,12 +21,13 @@ function duplicate() {
 function startGame(){
 	for(a = 0; a < i; a++){
 		var currentQuestionBlock = document.getElementById("question"+a);
-		var questionStr = currentQuestionBlock.children[0].val();
-		var falseAnswer1 = currentQuestionBlock.children[1].val();
+		var questionStr =  $('#'+'questionStr-'+a).text(); 
+		/*var falseAnswer1 = currentQuestionBlock.children[1].val();
 		var falseAnswer2 = currentQuestionBlock.children[2].val();
 		var falseAnswer3 = currentQuestionBlock.children[3].val();
 		var correctAnswer = currentQuestionBlock.children[4].val();
-
+*/
+console.log(questionStr);
 	}
   /*for(a = 0; a < i; a++){
   	var questionString = document.getElementById("questionStr-"+a).val();
