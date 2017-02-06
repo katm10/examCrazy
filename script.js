@@ -10,12 +10,13 @@ function duplicate() {
         this.id = this.id.replace("0", "") + i;
     })
   var array = new Array();
-   var oInput = document.getElementById('oInput');
 for (var ii = 0; ii < clone.childNodes.length; ii++)
 {
     var childId = clone.childNodes[ii].id;
+
    if(typeof(childId) !== 'undefined'){
     array.push(childId);
+        $(clone.childNodes[ii]).val("");
 }
 }
     console.log(array);
