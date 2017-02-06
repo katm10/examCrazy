@@ -27,7 +27,7 @@ function startGame(){
 		var falseAnswer3 = currentQuestionBlock.children[3].val();
 		var correctAnswer = currentQuestionBlock.children[4].val();
 */
-console.log(questionStr);
+console.log("question " + a+ " is " + questionStr);
 	}
   /*for(a = 0; a < i; a++){
   	var questionString = document.getElementById("questionStr-"+a).val();
