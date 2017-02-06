@@ -16,7 +16,7 @@
   };
   firebase.initializeApp(config);
   </script>
-  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="index.js"></script>
   
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
             <h1 class="text-inverse">Enter Code Below</h1>
             <form class="form-horizontal" role="form">
               <div class="form-group">
-                <input type="text" class="form-control" id="privateCode" placeholder="8-Digit Code" style="width: 50%; text-align:center; margin:auto; height:10%; font-size:222%">
+                <input type="text" class="form-control" id="privateCode" onkeyup="keyUp()" placeholder="8-Digit Code" style="width: 50%; text-align:center; margin:auto; height:10%; font-size:222%">
               </div>
             </form>
             <br>
