@@ -1,10 +1,9 @@
-Live Website:
+Github Page
 <https://katm10.github.io/examCrazy/>
 
-This is basically a bad kahoot ripoff.
+Created by Katherine, Yevgeniy, Patrick, and Adriano
 
-## To Do 
-1. figure out how to send the quiz code to the chat room
-2. code the js/jquery portion of the chatroom
-3. code the js/jquery portion of the game
-👽👽👽👽👽👽👽👽ayyyy lmaoo👽👽👽👽👽👽👽👽👽👽
+//TODO
+//Make chatroom primarily involving javascript
+//Implement id's into finding chatrooms
+//browse chatrooms?
