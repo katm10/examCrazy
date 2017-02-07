@@ -1,4 +1,4 @@
-var i = 0;
+
 var i = 0;
 var firebaseChatroomRef = firebase.database().ref('chatrooms/');
 
@@ -86,7 +86,8 @@ function startGame() {
       quizKey: firebaseGameRef.key
     };
 
-    $('#quizNameInput').val(buildUrl(url, parameters));
+    window.location.replace(buildUrl(url, parameters));
+
   }
   /*for(a = 0; a < i; a++){
   	var questionString = document.getElementById("questionStr-"+a).val();
