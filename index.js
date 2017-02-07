@@ -21,7 +21,7 @@ function keyUp(event){
 						alert("Placeholder for making chat");
 					}
 					else {
-						alert("Incorrect chat PIN.");
+						document.getElementById("warning").innerHTML = "Code not recognized";
 					}
 				}
 				else {
