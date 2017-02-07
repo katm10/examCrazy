@@ -81,11 +81,13 @@ function startGame() {
     // make chatroom page url
     var url = "https://katm10.github.io/examCrazy/game_and_chat.html";
     var num = randomNum();
+
     var parameters = {
       chatroomNum: num,
       quizKey: firebaseGameRef.key
     };
 
+    firebaseChatroomRef.push().set(parameters);
     window.location.replace(buildUrl(url, parameters));
 
   }
