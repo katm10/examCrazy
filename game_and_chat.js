@@ -1,11 +1,20 @@
 
 window.onload = function(){
+	function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
-	var url = window.location.href;
-	var index = url.indexOf("?");
-	if(index < 0)
-		return;
-	var chatroomID = url.substring(index + 1, url.length);
+	
+	var chatroomID =getUrlVars()["chatroomNum"];
 	console.log(chatroomID);
 	
 	var chatroomRef = firebase.database().ref('chatrooms/'+chatroomID);
