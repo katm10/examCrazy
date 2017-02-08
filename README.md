@@ -11,3 +11,6 @@ Created by Katherine, Yevgeniy, Patrick, and Adriano
 5. List of quizzes per chatroom<br/>
 6. Quiz sending<br/>
 7. Quiz taking<br/>
+8. Users<br/>
+
+The final goal of this project is to make an expanded kahoot ripoff.
