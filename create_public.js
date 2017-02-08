@@ -26,7 +26,7 @@ function submit(){
 					messages: [""],
 					users: [""]
 				});
-				window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+entered;
+				window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum=PUBLIC_"+entered;
 			}
 		});
 	}
