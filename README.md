@@ -4,7 +4,7 @@
 Created by Katherine, Yevgeniy, Patrick, and Adriano
 
 **TODO**<br/>
-1. Pubic/private chatroom creation<br/>
+1. ~~Pubic/private chatroom creation~~<br/>
 2. Public chatroom browsing<br/>
 3. Functional chatrooms<br/>
 4. Quiz creation<br/>

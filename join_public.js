@@ -27,5 +27,5 @@ window.onload = function(){
 }
 
 function send(element){
-	window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+element.innerHTML;
+	window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum=PUBLIC_"+element.innerHTML;
 }
