@@ -1,7 +1,9 @@
 
 
+
+
 var i = 0;
-var firebaseChatroomRef = firebase.database().ref('chatrooms/');
+const firebaseChatroomRef = firebase.database().ref('chatrooms/');
 
 function randomNum() {
   var num = Math.floor(Math.random() * 90000000) + 10000000;
@@ -54,6 +56,7 @@ function buildUrl(url, parameters) {
 }
 
 function startGame() {
+  
   var firebaseRef = firebase.database().ref('Games/');
   var firebaseGameRef = firebaseRef.push();
   var quizName = $('#quizNameInput').val();
@@ -88,7 +91,7 @@ function startGame() {
       quizKey: firebaseGameRef.key
     };
 
-    firebaseChatroomRef.ref(num).set({quizKey:firebaseGameRef.key});
+    firebase.database().ref('chatrooms/').child(num).set({quizKey:firebaseGameRef.key});
     window.location.replace(buildUrl(url, parameters));
 
   }
