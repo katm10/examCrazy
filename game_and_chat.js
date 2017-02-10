@@ -6,7 +6,11 @@ var messages = [""];
 
 window.onload = function(){
 
-<<<<<<< HEAD
+if($.jStorage.get("username")==null){
+    username = prompt("Hi! It seems like you haven't entered your username before. Please enter it below. (Note: This will be used for all chatrooms. Please don't make it something stupid.)", "Username");
+    $.jStorage.set("username", username);
+}
+
   var config = {
     apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
     authDomain: "exam-crazy.firebaseapp.com",
@@ -17,43 +21,7 @@ window.onload = function(){
   firebase.initializeApp(config);
 	function getUrlVars()
 {
-=======
-    var chatroomID_ = decodeURIComponent(getUrlVars()["chatroomNum"]);
-    
-    public = chatroomID_.indexOf("PUBLIC_") >= 0;
-    var chatroomRef;
 
-    if(public){
-        chatroomID = chatroomID_.substring(7, chatroomID_.length);
-        refPrefix += "public/";
-    }
-    else {
-        chatroomID = chatroomID_;
-    }
-
-    chatroomRef = firebase.database().ref(refPrefix+chatroomID);
-
-    document.getElementById("name").innerHTML = chatroomID + " Chat";
-
-	chatroomRef.once('value').then(function(snapshot) {
-		if(snapshot.val() == null){
-				alert("This chatroom does not exist.");
-		}
-        else {
-            firebase.database().ref(refPrefix+chatroomID+"/messages").on('value', function(snapshot) {
-                messages = snapshot.val();
-                if(messages == null){
-                    messages = [""];
-                }
-                update();
-            });
-        }
-	});
-
-};
-
-function getUrlVars(){
->>>>>>> origin/master
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     for(var i = 0; i < hashes.length; i++){
