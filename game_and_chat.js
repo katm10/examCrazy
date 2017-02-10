@@ -69,3 +69,4 @@ function submit(){
         document.getElementById("messageTextBox").value = "";
     }
 }
+}
