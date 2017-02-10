@@ -6,20 +6,13 @@ var messages = [""];
 
 window.onload = function(){
 
-if($.jStorage.get("username")==null){
-    username = prompt("Hi! It seems like you haven't entered your username before. Please enter it below. (Note: This will be used for all chatrooms. Please don't make it something stupid.)", "Username");
-    $.jStorage.set("username", username);
+    if($.jStorage.get("username")==null){
+        username = prompt("Hi! It seems like you haven't entered your username before. Please enter it below. (Note: This will be used for all chatrooms. Please don't make it something stupid.)", "Username");
+        $.jStorage.set("username", username);
+    }
 }
 
-  var config = {
-    apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
-    authDomain: "exam-crazy.firebaseapp.com",
-    databaseURL: "https://exam-crazy.firebaseio.com",
-    storageBucket: "exam-crazy.appspot.com",
-    messagingSenderId: "788284782428"
-  };
-  firebase.initializeApp(config);
-	function getUrlVars()
+function getUrlVars()
 {
 
     var vars = [], hash;
@@ -38,7 +31,7 @@ function keyup(event){
         submit();
         return true;
     }
-    
+
     return false;
 }
 
@@ -59,14 +52,13 @@ function update(){
 function submit(){
     var entered = document.getElementById("messageTextBox").value;
     if(entered.length > 0){
-        /*firebase.database().ref(refPrefix+entered+"/messages").once('value').then(function(snapshot) {
-            messages = snapshot.val();
-        });*/
-        messages.push(entered);
-        firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
+            /*firebase.database().ref(refPrefix+entered+"/messages").once('value').then(function(snapshot) {
+                messages = snapshot.val();
+            });*/
+            messages.push(entered);
+            firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
 
-        update();
-        document.getElementById("messageTextBox").value = "";
+            update();
+            document.getElementById("messageTextBox").value = "";
+        }
     }
-}
-}
