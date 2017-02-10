@@ -1,7 +1,7 @@
 
 window.onload = function(){
 
-	  var config = {
+  var config = {
     apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
     authDomain: "exam-crazy.firebaseapp.com",
     databaseURL: "https://exam-crazy.firebaseio.com",
