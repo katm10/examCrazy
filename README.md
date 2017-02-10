@@ -1,3 +1,5 @@
+Goto https://kahootripoff.slack.com/signup for easier communication.
+
 **Github Page:**<br/>
 <https://katm10.github.io/examCrazy/>
 
