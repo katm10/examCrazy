@@ -5,9 +5,12 @@
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
    
+=======
+>>>>>>> origin/master
     <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-    <script type = "text/javascript" src = "firebase_initialization.js"></script>
+    <script type="text/javascript" src="firebase_initialization.js"></script>
     <script type="text/javascript" src="game_and_chat.js"></script>
   </head><body>
     <div class="section">
@@ -34,12 +37,13 @@
             </table>
           </div>
           <div class="col-md-6">
+            <b><p style="text-align:center; font-size:150%; font-weight:900" id="name"></p></b>
             <p id="chatBox" style="height: 500px;word-wrap:break-word; overflow:auto"></p>
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Type your message" id="messageTextBox">
+                <input type="text" class="form-control" placeholder="Type your message" onkeyup = "keyup(event)" id="messageTextBox">
                 <span class="input-group-btn">
-                  <a class="btn btn-success" type="submit" id="sendMessage">Send</a>
+                  <a class="btn btn-success" type="submit" id="sendMessage" onclick = "submit()">Send</a>
                 </span>
               </div>
             </div>

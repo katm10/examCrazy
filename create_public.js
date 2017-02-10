@@ -17,16 +17,16 @@ function keyUp(event){
 function submit(){
 	var entered = document.getElementById("privateCode").value;
 	if(entered.length > 0){
-		firebase.database().ref('chatrooms/'+entered).once('value').then(function(snapshot) {
+		firebase.database().ref('chatrooms/public/'+entered).once('value').then(function(snapshot) {
 			if(snapshot.val() != null){
-				document.getElementById("warning").innerHTML = "Code already exists";
+				document.getElementById("warning").innerHTML = "Name already exists";
 			}
 			else {
-				firebase.database().ref('chatrooms/'+entered).set({
+				firebase.database().ref('chatrooms/public/'+entered).set({
 					messages: [""],
 					users: [""]
 				});
-				window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+entered;
+				window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum=PUBLIC_"+entered;
 			}
 		});
 	}

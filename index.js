@@ -17,8 +17,6 @@ function keyUp(event){
 function submit(){
 	var entered = document.getElementById("privateCode").value;
 	if(entered.length > 0){
-		messagesRef = firebase.database().ref('chatrooms/'+entered);
-
 		firebase.database().ref('chatrooms/'+entered).once('value').then(function(snapshot) {
 			if(snapshot.val() == null){
 				if(entered == "1"){
