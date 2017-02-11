@@ -17,6 +17,8 @@ window.onload = function(){
     $('#sendMessage').click(function(){
         submit();
     });
+
+    update();
 }
 
 function getUrlVars()
@@ -44,6 +46,9 @@ function keyup(event){
 
 function msgsToString(){
     var str = "";
+    firebase.database().ref(refPrefix+chatroomID+"/messages").once('value').then(function(snapshot) {
+                messages = snapshot.val();
+            });
     for(var i = 0; i < messages.length; i++){
         str += messages[i] + "<br>";
     }
@@ -59,9 +64,7 @@ function update(){
 function submit(){
     var entered = document.getElementById("messageTextBox").value;
     if(entered.length > 0){
-            /*firebase.database().ref(refPrefix+entered+"/messages").once('value').then(function(snapshot) {
-                messages = snapshot.val();
-            });*/
+            
             messages.push(entered);
             firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
 
