@@ -53,7 +53,12 @@ window.onload = function(){
         }
     });
 
-    
+    if(chatroomRef.child("quizKey")==null){
+        deleteElement("quizBox");
+    }/*
+    TODO: else: set up quiz
+    */
+
     update();
 
 
@@ -110,3 +115,9 @@ function submit(){
             document.getElementById("messageTextBox").value = "";
         }
     }
+
+//enter the string id of html element to remove it
+function deleteElement(idStr){
+    var elem = document.getElementById(idStr);
+    elem.parentNode.removeChild(elem);
+}

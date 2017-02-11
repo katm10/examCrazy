@@ -85,7 +85,7 @@ function startGame() {
 
     var parameters = {
       chatroomNum: num,
-      quizKey: firebaseGameRef.key
+     // quizKey: firebaseGameRef.key
     };
 
     firebase.database().ref('chatrooms/'+num).set({quizKey:firebaseGameRef.key});
