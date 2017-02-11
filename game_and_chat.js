@@ -1,7 +1,7 @@
 var public;
 var refPrefix = "chatrooms/";
 var chatroomID;
-
+var username; 
 var messages = [""];
 
 window.onload = function(){
@@ -9,6 +9,8 @@ window.onload = function(){
     if($.jStorage.get("username")==null){
         username = prompt("Hi! It seems like you haven't entered your username before. Please enter it below. (Note: This will be used for all chatrooms. Please don't make it something stupid.)", "Username");
         $.jStorage.set("username", username);
+    }else{
+        username = $.jStorage.get("username");
     }
 
     $('#messageTextBox').keyup(function(event){
@@ -65,7 +67,7 @@ function submit(){
     var entered = document.getElementById("messageTextBox").value;
     if(entered.length > 0){
             
-            messages.push(entered);
+            messages.push(username + " : " + entered);
             firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
 
             update();
