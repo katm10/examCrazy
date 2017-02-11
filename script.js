@@ -6,15 +6,11 @@ var firebaseChatroomRef = firebase.database().ref('chatrooms/');
 function randomNum() {
   var num = Math.floor(Math.random() * 90000000) + 10000000;
   //todo: figure out why this doesn't work
- /* var query = firebaseChatroomRef.orderByKey();
-  	query.once("value").then(function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var key = childSnapshot.key; 
-        if(key==num){
-        	randomNum();
-        }
+  firebaseChatroomRef.once("value").then(function(snapshot) {
+     if(snapshot.val() != null){
+        document.getElementById("warning").innerHTML = "Code already exists";
+      }
     });
-  });*/
   return num;
 }
 

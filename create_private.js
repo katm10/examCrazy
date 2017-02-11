@@ -14,20 +14,25 @@ function keyUp(event){
 	return false;
 }
 
+function randomNum() {
+	var num = Math.floor(Math.random() * 90000000) + 10000000;
+  //todo: figure out why this doesn't work
+  firebase.database().ref('chatrooms/').once("value").then(function(snapshot) {
+  	if(snapshot.val() != null){
+  		document.getElementById("warning").innerHTML = "Code already exists";
+  	}
+  });
+  return num;
+}
+
 function submit(){
 	var entered = document.getElementById("privateCode").value;
+
 	if(entered.length > 0){
-		firebase.database().ref('chatrooms/'+entered).once('value').then(function(snapshot) {
-			if(snapshot.val() != null){
-				document.getElementById("warning").innerHTML = "Code already exists";
-			}
-			else {
-				firebase.database().ref('chatrooms/'+entered).set({
-					messages: [""],
-					users: [""]
-				});
-				window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+entered;
-			}
+		var code = randomNum();
+		firebase.database().ref('chatrooms/'+code).set({
+			name: entered
 		});
+		window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+code;
 	}
 }
