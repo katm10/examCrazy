@@ -11,8 +11,12 @@ window.onload = function(){
         $.jStorage.set("username", username);
     }
 
-    $('#messageTextBox').keyup(keyup(event));
-    $('#sendMessage').click(submit());
+    $('#messageTextBox').keyup(function(event){
+        keyup(event);    
+    });
+    $('#sendMessage').click(function(){
+        submit();
+    });
 }
 
 function getUrlVars()
