@@ -39,10 +39,10 @@ window.onload = function(){
     if(public){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
-         chatroomRef.once('value').then(function(snapshot) {
+       chatroomRef.once('value').then(function(snapshot) {
            var name = snapshot.child("name");
-       }
-       document.getElementById("name").innerHTML = name + " Chat";
+           document.getElementById("name").innerHTML = name + " Chat";
+       });
     }
     chatroomRef.once('value').then(function(snapshot) {
         if(snapshot.val() == null){
