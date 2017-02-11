@@ -6,15 +6,41 @@ var messages = [""];
 
 window.onload = function(){
 
-    if($.jStorage.get("username")==null){
-        username = prompt("Hi! It seems like you haven't entered your username before. Please enter it below. (Note: This will be used for all chatrooms. Please don't make it something stupid.)", "Username");
-        $.jStorage.set("username", username);
+    var chatroomID_ = decodeURIComponent(getUrlVars()["chatroomNum"]);
+    
+    public = chatroomID_.indexOf("PUBLIC_") >= 0;
+    var chatroomRef;
+
+    if(public){
+        chatroomID = chatroomID_.substring(7, chatroomID_.length);
+        refPrefix += "public/";
     }
-}
+    else {
+        chatroomID = chatroomID_;
+    }
 
-function getUrlVars()
-{
+    chatroomRef = firebase.database().ref(refPrefix+chatroomID);
 
+    document.getElementById("name").innerHTML = chatroomID + " Chat";
+
+    chatroomRef.once('value').then(function(snapshot) {
+        if(snapshot.val() == null){
+                alert("This chatroom does not exist.");
+        }
+        else {
+            firebase.database().ref(refPrefix+chatroomID+"/messages").on('value', function(snapshot) {
+                messages = snapshot.val();
+                if(messages == null){
+                    messages = [""];
+                }
+                update();
+            });
+        }
+    });
+
+};
+
+function getUrlVars(){
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     for(var i = 0; i < hashes.length; i++){
@@ -31,7 +57,7 @@ function keyup(event){
         submit();
         return true;
     }
-
+    
     return false;
 }
 
@@ -52,13 +78,13 @@ function update(){
 function submit(){
     var entered = document.getElementById("messageTextBox").value;
     if(entered.length > 0){
-            /*firebase.database().ref(refPrefix+entered+"/messages").once('value').then(function(snapshot) {
-                messages = snapshot.val();
-            });*/
-            messages.push(entered);
-            firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
+        /*firebase.database().ref(refPrefix+entered+"/messages").once('value').then(function(snapshot) {
+            messages = snapshot.val();
+        });*/
+        messages.push(entered);
+        firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
 
-            update();
-            document.getElementById("messageTextBox").value = "";
-        }
+        update();
+        document.getElementById("messageTextBox").value = "";
     }
+}
