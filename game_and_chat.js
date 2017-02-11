@@ -35,7 +35,7 @@ window.onload = function(){
     }
 
     chatroomRef = firebase.database().ref(refPrefix+chatroomID);
-    console.log(chatroomRef);
+    console.log(chatroomID);
     document.getElementById("name").innerHTML = chatroomID + " Chat";
 
     chatroomRef.once('value').then(function(snapshot) {
@@ -53,11 +53,13 @@ window.onload = function(){
         }
     });
 
-    if(!(chatroomRef.child("quizKey")==null)){
-        deleteElement("quizBox");
-    }/*
+    chatroomRef.once('value').then(function(snapshot) {
+        if(snapshot.child("quizKey") == null){
+                deleteElement("quizBox");
+        }/*
     TODO: else: set up quiz
     */
+    });
 
     update();
 
