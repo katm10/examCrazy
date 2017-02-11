@@ -35,7 +35,7 @@ window.onload = function(){
     }
 
     chatroomRef = firebase.database().ref(refPrefix+chatroomID);
-
+    console.log(chatroomRef);
     document.getElementById("name").innerHTML = chatroomID + " Chat";
 
     chatroomRef.once('value').then(function(snapshot) {
@@ -53,7 +53,7 @@ window.onload = function(){
         }
     });
 
-    if(chatroomRef.child("quizKey")==null){
+    if(!(chatroomRef.child("quizKey")==null)){
         deleteElement("quizBox");
     }/*
     TODO: else: set up quiz
