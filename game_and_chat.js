@@ -21,7 +21,7 @@ window.onload = function(){
     });
 
 
-   var chatroomID_ = decodeURIComponent(getUrlVars()["chatroomNum"]);
+    var chatroomID_ = decodeURIComponent(getUrlVars()["chatroomNum"]);
     
     public = chatroomID_.indexOf("PUBLIC_") >= 0;
     var chatroomRef;
@@ -36,11 +36,17 @@ window.onload = function(){
 
     chatroomRef = firebase.database().ref(refPrefix+chatroomID);
     console.log(chatroomID);
-    document.getElementById("name").innerHTML = chatroomID + " Chat";
-
+    if(public){
+        document.getElementById("name").innerHTML = chatroomID + " Chat";
+    } else{
+         chatroomRef.once('value').then(function(snapshot) {
+           var name = snapshot.child("name");
+       }
+       document.getElementById("name").innerHTML = name + " Chat";
+    }
     chatroomRef.once('value').then(function(snapshot) {
         if(snapshot.val() == null){
-                alert("This chatroom does not exist.");
+            alert("This chatroom does not exist.");
         }
         else {
             firebase.database().ref(refPrefix+chatroomID+"/messages").on('value', function(snapshot) {
@@ -55,11 +61,11 @@ window.onload = function(){
 
     chatroomRef.once('value').then(function(snapshot) {
         if(snapshot.child("quizKey") == null){
-                deleteElement("quizBox");
+            deleteElement("quizBox");
         }/*
     TODO: else: set up quiz
     */
-    });
+});
 
     update();
 
@@ -92,8 +98,8 @@ function keyup(event){
 function msgsToString(){
     var str = "";
     firebase.database().ref(refPrefix+chatroomID+"/messages").once('value').then(function(snapshot) {
-                messages = snapshot.val();
-            });
+        messages = snapshot.val();
+    });
     for(var i = 0; i < messages.length; i++){
         str += messages[i] + "<br>";
     }
@@ -109,14 +115,14 @@ function update(){
 function submit(){
     var entered = document.getElementById("messageTextBox").value;
     if(entered.length > 0){
-            
-            messages.push(username + " : " + entered);
-            firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
 
-            update();
-            document.getElementById("messageTextBox").value = "";
-        }
+        messages.push(username + " : " + entered);
+        firebase.database().ref(refPrefix+chatroomID+"/messages").set(messages);
+
+        update();
+        document.getElementById("messageTextBox").value = "";
     }
+}
 
 //enter the string id of html element to remove it
 function deleteElement(idStr){
