@@ -28,11 +28,8 @@ function randomNum() {
 function submit(){
 	var entered = document.getElementById("privateCode").value;
 
-	if(entered.length > 0){
 		var code = randomNum();
-		firebase.database().ref('chatrooms/'+code).set({
-			name: entered
-		});
+		firebase.database().ref('chatrooms/'+code).set({name: entered});
 		window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+code;
-	}
+	
 }

@@ -39,10 +39,14 @@ window.onload = function(){
     if(public){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
-         chatroomRef.once('value').then(function(snapshot) {
-           var name = snapshot.child("name");
-       }
-       document.getElementById("name").innerHTML = name + " Chat";
+       chatroomRef.once('value').then(function(snapshot) {
+           var name = snapshot.child("name").val();
+           if(name != null){
+           document.getElementById("name").innerHTML = name + " Chat";
+           }else{
+               document.getElementById("name").innerHTML = chatroomID + " Chat";
+           }
+       });
     }
     chatroomRef.once('value').then(function(snapshot) {
         if(snapshot.val() == null){
@@ -60,7 +64,8 @@ window.onload = function(){
     });
 
     chatroomRef.once('value').then(function(snapshot) {
-        if(snapshot.child("quizKey") == null){
+        console.log(snapshot.child("quizKey").val());
+        if(snapshot.child("quizKey").val() == null){
             deleteElement("quizBox");
         }/*
     TODO: else: set up quiz
