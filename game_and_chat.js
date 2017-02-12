@@ -40,12 +40,17 @@ window.onload = function(){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
        chatroomRef.once('value').then(function(snapshot) {
+<<<<<<< HEAD
            var name = snapshot.child("name").val();
            if(name != null){
            document.getElementById("name").innerHTML = name + " Chat";
            }else{
                document.getElementById("name").innerHTML = chatroomID + " Chat";
            }
+=======
+           var name = snapshot.child("name");
+           document.getElementById("name").innerHTML = name + " Chat";
+>>>>>>> origin/master
        });
     }
     chatroomRef.once('value').then(function(snapshot) {
