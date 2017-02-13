@@ -1,7 +1,7 @@
 **Github Page:**<br/>
 <https://katm10.github.io/examCrazy/>
 
-Created by Katherine, Yevgeniy, Patrick, and Adriano
+Created by Katherine, Yevgeniy, Patrick, and Adriano the master of README
 
 **TODO**<br/>
 1. ~~Pubic/private chatroom creation~~<br/>
@@ -12,5 +12,6 @@ Created by Katherine, Yevgeniy, Patrick, and Adriano
 6. Quiz sending<br/>
 7. Quiz taking<br/>
 8. Users<br/>
+9. Leaving chat rooms<br/>
 
 The final goal of this project is to make an expanded kahoot ripoff.
