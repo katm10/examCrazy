@@ -30,6 +30,5 @@ function submit(){
 
 		var code = randomNum();
 		firebase.database().ref('chatrooms/'+code).set({name: entered});
-		window.location = "https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+code;
-	
+window.location.replace("https://katm10.github.io/examCrazy/game_and_chat.html?chatroomNum="+code);
 }
