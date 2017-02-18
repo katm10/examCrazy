@@ -84,16 +84,18 @@ function startGame() {
      // quizKey: firebaseGameRef.key
     };
 
-    firebase.database().ref('chatrooms/'+num).set({quizKey:firebaseGameRef.key});
+    var chatroomParameters = {quizKey:firebaseGameRef.key, name:quizName};
+
+    firebase.database().ref('chatrooms/'+num).set(chatroomParameters);
     window.location.replace(buildUrl(url, parameters));
 
   }
   /*for(a = 0; a < i; a++){
-  	var questionString = document.getElementById("questionStr-"+a).val();
-  	var falseAnswer1 = document.getElementById("falseAnswer1-"+a).val();
-  	var falseAnswer2 = document.getElementById("falseAnswer2-"+a).val();
-  	var falseAnswer3 = document.getElementById("falseAnswer3-"+a).val();
-  	var correctAnswer = document.getElementById("correctAnswer-"+a).val();
-  	console.log(questionString + " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
+    var questionString = document.getElementById("questionStr-"+a).val();
+    var falseAnswer1 = document.getElementById("falseAnswer1-"+a).val();
+    var falseAnswer2 = document.getElementById("falseAnswer2-"+a).val();
+    var falseAnswer3 = document.getElementById("falseAnswer3-"+a).val();
+    var correctAnswer = document.getElementById("correctAnswer-"+a).val();
+    console.log(questionString + " " + falseAnswer1 + " " + falseAnswer2 + " " + falseAnswer3 + " " + correctAnswer);
   }*/
 }
