@@ -53,7 +53,6 @@ function startGame() {
   var firebaseRef = firebase.database().ref('Games/');
   var firebaseGameRef = firebaseRef.push();
   var quizName = $('#quizNameInput').val();
-  firebaseGameRef.child("Name").set(quizName);
   console.log(i);
   for (a = 0; a <= i; a++) {
     var firebaseQuestionRef = firebaseGameRef.child("question" + a);

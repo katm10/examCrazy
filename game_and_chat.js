@@ -68,9 +68,10 @@ window.onload = function(){
         console.log(snapshot.child("quizKey").val());
         if(snapshot.child("quizKey").val() == null){
             deleteElement("quizBox");
-        }/*
-    TODO: else: set up quiz
-    */
+        }else{
+            var quizKey = snapshot.child("quizKey").val();
+            setUpQuiz(quizKey);
+        }
 });
 
     update();
@@ -134,4 +135,15 @@ function submit(){
 function deleteElement(idStr){
     var elem = document.getElementById(idStr);
     elem.parentNode.removeChild(elem);
+}
+
+function setUpQuiz(key){
+    var gameInfoRef = firebase.database().ref('Games/'+key);
+    gameInfoRef.once('value').then(function(snapshot){
+        var counter = 0;
+        snapshot.forEach(function(childSnapshot) {
+            counter++;
+        });
+        console.log(counter);
+    });
 }
