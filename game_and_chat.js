@@ -142,7 +142,14 @@ function setUpQuiz(key){
     gameInfoRef.once('value').then(function(snapshot){
         var counter = 0;
         snapshot.forEach(function(childSnapshot) {
-            counter++;
+            var question = childSnapshot.child("questionStr");
+            var ans1 = childSnapshot.child("falseAnswer1");
+            var ans2 = childSnapshot.child("falseAnswer2");
+            var ans3 = childSnapshot.child("falseAnswer3");
+            var correct = childSnapshot.child("correctAnswer");
+            var ansBoxes = [$('#box1'), $('#box2'), $('#box3'), $('#box4')];
+            var correctBox = ansBoxes[Math.floor( Math.random() * 5 ) ];
+            correctBox.val(correct);
         });
         console.log(counter);
     });
