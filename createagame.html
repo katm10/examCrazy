@@ -2,14 +2,14 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
     <script>
       // Initialize Firebase
-                var config = {
-                  apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
-                  authDomain: "exam-crazy.firebaseapp.com",
-                  databaseURL: "https://exam-crazy.firebaseio.com",
-                  storageBucket: "exam-crazy.appspot.com",
-                  messagingSenderId: "788284782428"
-                };
-                firebase.initializeApp(config);
+                        var config = {
+                          apiKey: "AIzaSyB0YLiSfVf8aDluRvk268eCL_mpZFXYug0",
+                          authDomain: "exam-crazy.firebaseapp.com",
+                          databaseURL: "https://exam-crazy.firebaseio.com",
+                          storageBucket: "exam-crazy.appspot.com",
+                          messagingSenderId: "788284782428"
+                        };
+                        firebase.initializeApp(config);
     </script>
     <script type="text/javascript" src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
@@ -26,31 +26,23 @@
           <div class="col-md-12">
             <form role="form">
               <div class="form-group">
-                <h3>
-                  <label class="control-label" for="exampleInputEmail1">Quiz Name</label>
+                <h2>
+                  <label class="control-label" style="color:#006600" for="exampleInputEmail1">Quiz Name</label>
                   <input class="form-control" id="quizNameInput" placeholder="Enter the title for this quiz" type="text">
-                </h3>
+                </h2>
               </div>
               <div id="questionsDiv">
-               
-                  <div id="question0"><h4>
-                      <label class="control-label" for="questionStr-0">Question</label>
-                      <input class="form-control" id="questionStr-0" placeholder="Question" type="text"> </h4>
-      
-                  
-               
+                <div id="question0">
+                  <label class="control-label" style="font-size:25" for="questionStr-0">Question</label>
+                  <input class="form-control" style="font-size:20" id="questionStr-0" placeholder="Question" type="text">
                   <label class="control-label" for="falseAnswer1-0">Incorrect Answer 1</label>
                   <input class="form-control" id="falseAnswer1-0" placeholder="Incorrect Answer 1" type="text">
-  
                   <label class="control-label" for="falseAnswer2-0">Incorect Answer 2</label>
                   <input class="form-control" id="falseAnswer2-0" placeholder="Incorect Answer 2" type="text">
-  
                   <label class="control-label" for="falseAnswer3-0">Incorrect Answer 3</label>
                   <input class="form-control" id="falseAnswer3-0" placeholder="Incorrect Answer 3" type="text">
-  
                   <label class="control-label" for="correctAnswer-0">Correct Answer</label>
                   <input class="form-control" id="correctAnswer-0" placeholder="Correct Answer" type="text">
-  
                 </div>
               </div>
             </form>
