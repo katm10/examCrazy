@@ -39,42 +39,42 @@ window.onload = function(){
     if(public){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
-       chatroomRef.once('value').then(function(snapshot) {
+     chatroomRef.once('value').then(function(snapshot) {
 
-           var name = snapshot.child("name").val();
-           if(name != null){
-           document.getElementById("name").innerHTML = name + " Chat";
-           }else{
-               document.getElementById("name").innerHTML = chatroomID + " Chat";
-           }
-       });
+         var name = snapshot.child("name").val();
+         if(name != null){
+             document.getElementById("name").innerHTML = name + " Chat";
+         }else{
+             document.getElementById("name").innerHTML = chatroomID + " Chat";
+         }
+     });
+ }
+ chatroomRef.once('value').then(function(snapshot) {
+    if(snapshot.val() == null){
+        alert("This chatroom does not exist.");
     }
-    chatroomRef.once('value').then(function(snapshot) {
-        if(snapshot.val() == null){
-            alert("This chatroom does not exist.");
-        }
-        else {
-            firebase.database().ref(refPrefix+chatroomID+"/messages").on('value', function(snapshot) {
-                messages = snapshot.val();
-                if(messages == null){
-                    messages = [""];
-                }
-                update();
-            });
-        }
-    });
-
-    chatroomRef.once('value').then(function(snapshot) {
-        console.log(snapshot.child("quizKey").val());
-        if(snapshot.child("quizKey").val() == null){
-            deleteElement("quizBox");
-        }else{
-            var quizKey = snapshot.child("quizKey").val();
-            setUpQuiz(quizKey);
-        }
+    else {
+        firebase.database().ref(refPrefix+chatroomID+"/messages").on('value', function(snapshot) {
+            messages = snapshot.val();
+            if(messages == null){
+                messages = [""];
+            }
+            update();
+        });
+    }
 });
 
-    update();
+ chatroomRef.once('value').then(function(snapshot) {
+    console.log(snapshot.child("quizKey").val());
+    if(snapshot.child("quizKey").val() == null){
+        deleteElement("quizBox");
+    }else{
+        var quizKey = snapshot.child("quizKey").val();
+        setUpQuiz(quizKey);
+    }
+});
+
+ update();
 
 
 }
@@ -138,19 +138,32 @@ function deleteElement(idStr){
 }
 
 function setUpQuiz(key){
+/*Matrix for questions in this format
+    | question-0     ans1-0   ans2-0    ans3-0    correct-0|
+    | question-1     ans1-1   ans2-1    ans3-1    correct-1|
+    | question-2     ans1-1   ans2-2    ans3-2    correct-2|
+
+    so quizArr[1][2] returns ans2-1
+
+    */
+    var name;
+    var quizArr = [];
     var gameInfoRef = firebase.database().ref('Games/'+key);
     gameInfoRef.once('value').then(function(snapshot){
         var counter = 0;
         snapshot.forEach(function(childSnapshot) {
-            var question = childSnapshot.child("questionStr");
-            var ans1 = childSnapshot.child("falseAnswer1");
-            var ans2 = childSnapshot.child("falseAnswer2");
-            var ans3 = childSnapshot.child("falseAnswer3");
-            var correct = childSnapshot.child("correctAnswer");
-            var ansBoxes = [$('#box1'), $('#box2'), $('#box3'), $('#box4')];
-            var correctBox = ansBoxes[Math.floor( Math.random() * 5 ) ];
-            correctBox.val(correct);
+            if(counter==0){
+                name = childSnapshot.child("Name").val();
+            }else{
+                quizArr.push([childSnapshot.child("questionStr").val(),childSnapshot.child("falseAnswer1").val()
+                    ,childSnapshot.child("falseAnswer2").val()
+                    ,childSnapshot.child("falseAnswer3").val()
+                    ,childSnapshot.child("correctAnswer").val()]);
+
+            }
+            counter++;
         });
         console.log(counter);
+        console.log(quizArr[0][2]);
     });
 }
