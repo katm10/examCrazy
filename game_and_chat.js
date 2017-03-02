@@ -39,17 +39,17 @@ window.onload = function(){
     if(public){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
-     chatroomRef.once('value').then(function(snapshot) {
+       chatroomRef.once('value').then(function(snapshot) {
 
-         var name = snapshot.child("name").val();
-         if(name != null){
-             document.getElementById("name").innerHTML = name + " Chat";
-         }else{
-             document.getElementById("name").innerHTML = chatroomID + " Chat";
-         }
-     });
- }
- chatroomRef.once('value').then(function(snapshot) {
+           var name = snapshot.child("name").val();
+           if(name != null){
+               document.getElementById("name").innerHTML = name + " Chat";
+           }else{
+               document.getElementById("name").innerHTML = chatroomID + " Chat";
+           }
+       });
+   }
+   chatroomRef.once('value').then(function(snapshot) {
     if(snapshot.val() == null){
         alert("This chatroom does not exist.");
     }
@@ -64,7 +64,7 @@ window.onload = function(){
     }
 });
 
- chatroomRef.once('value').then(function(snapshot) {
+   chatroomRef.once('value').then(function(snapshot) {
     console.log(snapshot.child("quizKey").val());
     if(snapshot.child("quizKey").val() == null){
         deleteElement("quizBox");
@@ -74,7 +74,7 @@ window.onload = function(){
     }
 });
 
- update();
+   update();
 
 
 }
@@ -166,4 +166,14 @@ function setUpQuiz(key){
         console.log(counter);
         console.log(quizArr[0][2]);
     });
+
+    //------finished grabbing data; let the animating begin!-------------------------//
+
+    var stage = new createjs.Stage("quizCanvas");
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+    circle.x = 100;
+    circle.y = 100;
+    stage.addChild(circle);
+    stage.update();
 }
