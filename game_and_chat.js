@@ -39,17 +39,17 @@ window.onload = function(){
     if(public){
         document.getElementById("name").innerHTML = chatroomID + " Chat";
     } else{
-       chatroomRef.once('value').then(function(snapshot) {
+     chatroomRef.once('value').then(function(snapshot) {
 
-           var name = snapshot.child("name").val();
-           if(name != null){
-               document.getElementById("name").innerHTML = name + " Chat";
-           }else{
-               document.getElementById("name").innerHTML = chatroomID + " Chat";
-           }
-       });
-   }
-   chatroomRef.once('value').then(function(snapshot) {
+         var name = snapshot.child("name").val();
+         if(name != null){
+             document.getElementById("name").innerHTML = name + " Chat";
+         }else{
+             document.getElementById("name").innerHTML = chatroomID + " Chat";
+         }
+     });
+ }
+ chatroomRef.once('value').then(function(snapshot) {
     if(snapshot.val() == null){
         alert("This chatroom does not exist.");
     }
@@ -64,7 +64,7 @@ window.onload = function(){
     }
 });
 
-   chatroomRef.once('value').then(function(snapshot) {
+ chatroomRef.once('value').then(function(snapshot) {
     console.log(snapshot.child("quizKey").val());
     if(snapshot.child("quizKey").val() == null){
         deleteElement("quizBox");
@@ -74,7 +74,7 @@ window.onload = function(){
     }
 });
 
-   update();
+ update();
 
 
 }
@@ -170,10 +170,16 @@ function setUpQuiz(key){
     //------finished grabbing data; let the animating begin!-------------------------//
 
     var stage = new createjs.Stage("quizCanvas");
-    var circle = new createjs.Shape();
-    circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
-    circle.x = 100;
-    circle.y = 100;
-    stage.addChild(circle);
+    var questionRect = new createjs.Shape();
+    questionRect.graphics.beginStroke("black").drawRect(0, 0, stage.canvas.width, stage.canvas.height/ 2);
+    var button1 = new createjs.Shape();
+    button1.graphics.beginStroke("black").drawRect(0, stage.canvas.height/2, stage.canvas.width / 2, stage.canvas.height/ 4);
+    var button2 = new createjs.Shape();
+    button2.graphics.beginStroke("black").drawRect(0, stage.canvas.height - (stage.canvas.height/4), stage.canvas.width / 2, stage.canvas.height/ 4);
+    var button3 = new createjs.Shape();
+   button3.graphics.beginStroke("black").drawRect(stage.canvas.width/2, stage.canvas.height/2, stage.canvas.width / 2, stage.canvas.height/ 4);
+    var button4 = new createjs.Shape();
+    button4.graphics.beginStroke("black").drawRect(stage.canvas.width/2, stage.canvas.height - (stage.canvas.height/4), stage.canvas.width / 2, stage.canvas.height/ 4);
+    stage.addChild(questionRect, button1, button2, button3, button4);
     stage.update();
 }
